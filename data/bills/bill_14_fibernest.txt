@@ -1,0 +1,8 @@
+FiberNest Internet - Invoice
+Invoice date: 11/08/2026   Acct: 11-3874
+Description | Amount
+Gigabit plan | $79.99
+Equipment rental | $10.00
+Balance brought forward: $0.00
+TOTAL DUE $89.99
+Due date: 01/09/2026

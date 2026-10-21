@@ -1,0 +1,31 @@
+{
+  "name": "slothbank",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "gen": "tsx src/generate-bills.ts",
+    "seed": "tsx src/seed.ts",
+    "reset": "tsx src/reset.ts",
+    "bench": "tsx src/benchmark.ts",
+    "bench:noretry": "tsx src/benchmark.ts --no-retry",
+    "start": "tsx src/main.ts",
+    "audit": "tsx src/audit.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mastra/core": "^1.78.0",
+    "@mastra/libsql": "^1.26.2",
+    "chokidar": "^4.0.3",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.22.0 <23"
+  }
+}

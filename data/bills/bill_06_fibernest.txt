@@ -1,0 +1,12 @@
+Subject: Your FiberNest Internet bill is ready
+
+Hi Alex,
+
+Your latest bill (issued 2026-06-11) is ready. Here's the breakdown:
+
+  * Gigabit plan: $79.99
+  * Equipment rental: $10.00
+  * Promotional discount: -$20.00
+
+You owe $69.99 by 2026-07-02. Last month's bill was $89.12 (already paid).
+Account: 11-2775

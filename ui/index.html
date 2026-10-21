@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SlothBank</title>
+<style>
+  :root {
+    --bg: #f6f3ee; --card: #ffffff; --text: #2b2723; --muted: #6f675f; --line: #e4ddd3;
+    --accent: #5b7a4a; --warn: #c2410c; --warn-bg: #fff1e8; --band: #cfe0c4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1b1916; --card: #26231f; --text: #eee8df; --muted: #a39a8f; --line: #3a352f;
+            --accent: #9bc383; --warn: #fb923c; --warn-bg: #3a2616; --band: #3b4b32; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 1.6rem; }
+  h2 { font-size: 1.05rem; margin: 28px 0 10px; }
+  .sub { color: var(--muted); font-size: .85rem; }
+  .badge { display: inline-block; padding: 2px 8px; border: 1px solid var(--line); border-radius: 999px; font-size: .75rem; color: var(--muted); }
+  button { font: inherit; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  button:disabled { opacity: .6; cursor: wait; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+  .summary { font-size: 1.05rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+  .m-name { font-weight: 600; }
+  .m-fc { font-size: .85rem; color: var(--muted); }
+  .anom { border-color: var(--warn); }
+  .anom h3 { margin: 0 0 4px; font-size: 1rem; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); font-size: .75rem; margin-right: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: .85rem; margin: 8px 0; }
+  td, th { text-align: left; padding: 3px 6px; border-bottom: 1px solid var(--line); }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  pre { white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; font: .85rem/1.45 ui-monospace, Menlo, Consolas, monospace; margin: 6px 0; }
+  svg { display: block; width: 100%; height: auto; }
+  .foot { color: var(--muted); font-size: .8rem; margin-top: 24px; }
+  .err { color: var(--warn); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>🦥 SlothBank</h1>
+      <div class="sub" id="meta">loading…</div>
+    </div>
+    <button id="run">Wake the sloth</button>
+  </header>
+
+  <div id="msg" class="sub"></div>
+  <div id="content"></div>
+  <p class="foot">Everything on this page was computed on this machine. Sample data is synthetic unless you dropped in your own bills.</p>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+
+function el(tag, props, ...kids) {
+  const e = document.createElement(tag);
+  Object.assign(e, props || {});
+  for (const k of kids) e.append(k);
+  return e;
+}
+function svg(tag, attrs) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  return e;
+}
+const money = (cur, n) => (n < 0 ? "-" : "") + cur + Math.abs(n).toFixed(2);
+
+function sparkline(m) {
+  const W = 240, H = 64, P = 8;
+  const vals = m.series.map((s) => s.value);
+  const f = m.forecast;
+  const all = vals.concat(f ? [f.p10, f.p90] : []);
+  const lo = Math.min(...all), hi = Math.max(...all);
+  const span = hi - lo || 1;
+  const n = vals.length + (f ? 1 : 0);
+  const x = (i) => P + (i * (W - 2 * P)) / Math.max(n - 1, 1);
+  const y = (v) => H - P - ((v - lo) / span) * (H - 2 * P);
+  const flagged = new Set(m.checks.filter((c) => c.flagged).map((c) => c.source_file));
+  const s = svg("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `${m.merchant} spending history and forecast` });
+  s.append(svg("polyline", { points: vals.map((v, i) => `${x(i)},${y(v)}`).join(" "), fill: "none", stroke: "var(--muted)", "stroke-width": 2 }));
+  m.series.forEach((p, i) => s.append(svg("circle", { cx: x(i), cy: y(p.value), r: flagged.has(p.source_file) ? 4.5 : 2.5, fill: flagged.has(p.source_file) ? "var(--warn)" : "var(--muted)" })));
+  if (f) {
+    const fx = x(n - 1);
+    s.append(svg("line", { x1: x(vals.length - 1), y1: y(vals[vals.length - 1]), x2: fx, y2: y(f.median), stroke: "var(--accent)", "stroke-dasharray": "3 3" }));
+    s.append(svg("rect", { x: fx - 4, y: y(f.p90), width: 8, height: Math.max(y(f.p10) - y(f.p90), 1), fill: "var(--band)", rx: 3 }));
+    s.append(svg("circle", { cx: fx, cy: y(f.median), r: 3.5, fill: "var(--accent)" }));
+  }
+  return s;
+}
+
+function render(d) {
+  const c = d.currency;
+  $("meta").replaceChildren(
+    `Data through ${d.as_of} · generated ${new Date(d.generated_at).toLocaleString()} `,
+    el("span", { className: "badge", textContent: `${d.engine} · local` }),
+  );
+  const root = $("content");
+  root.replaceChildren(el("div", { className: "card summary", textContent: d.sloth_summary }));
+
+  if (d.anomalies.length) {
+    root.append(el("h2", { textContent: "Needs your attention" }));
+    for (const a of d.anomalies) {
+      const card = el("div", { className: "card anom" });
+      card.append(el("h3", { textContent: `${a.merchant} · ${a.billing_date}` }));
+      card.append(
+        el("div", {},
+          el("span", { className: "chip", textContent: a.analysis.likely_cause.replace("_", " ") }),
+          el("span", { className: "chip", textContent: `suggest: ${a.analysis.recommended_action}` }),
+          `${money(c, a.actual)} billed vs ${money(c, a.expected)} expected (${a.deviation_pct > 0 ? "+" : ""}${a.deviation_pct}%, 90% range ${money(c, a.p05)}–${money(c, a.p95)})`,
+        ),
+      );
+      card.append(el("p", { textContent: a.analysis.explanation + (a.analysis.from_model ? "" : " (model unavailable, showing computed fallback)") }));
+      if (a.diff.length) {
+        const t = el("table");
+        t.append(el("tr", {}, el("th", { textContent: "Line item" }), el("th", { className: "n", textContent: "Before" }), el("th", { className: "n", textContent: "Now" }), el("th", { className: "n", textContent: "Change" })));
+        for (const r of a.diff)
+          t.append(el("tr", {}, el("td", { textContent: r.description }), el("td", { className: "n", textContent: r.prev === null ? "new" : money(c, r.prev) }), el("td", { className: "n", textContent: r.cur === null ? "removed" : money(c, r.cur) }), el("td", { className: "n", textContent: (r.delta > 0 ? "+" : "") + money(c, r.delta) })));
+        card.append(t);
+      }
+      if (a.email) {
+        card.append(el("div", { className: "sub", textContent: "Draft email (not sent)" }));
+        const text = `Subject: ${a.email.subject}\n\n${a.email.body}`;
+        card.append(el("pre", { textContent: text }));
+        const b = el("button", { textContent: "Copy email" });
+        b.onclick = async () => { await navigator.clipboard.writeText(text); b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy email"), 1500); };
+        card.append(b);
+      }
+      root.append(card);
+    }
+  }
+
+  root.append(el("h2", { textContent: d.next_month_total === null ? "Forecast" : `Next month: about ${money(c, d.next_month_total)}` }));
+  const grid = el("div", { className: "grid" });
+  for (const m of d.merchants) {
+    const card = el("div", { className: "card" });
+    card.append(el("div", { className: "m-name", textContent: m.merchant }));
+    card.append(el("div", { className: "m-fc", textContent: m.forecast ? `${m.forecast.month}: ${money(c, m.forecast.median)} (${money(c, m.forecast.p10)}–${money(c, m.forecast.p90)})` : `needs more history (${m.n} bills)` }));
+    card.append(sparkline(m));
+    grid.append(card);
+  }
+  root.append(grid);
+
+  const b = d.backtest;
+  if (b.n) root.append(el("p", { className: "foot", textContent: `Backtest on ${b.n} past bills: ${d.engine} median error ${money(c, b.engine_mae)} vs ${money(c, b.naive_last_mae)} for "same as last month".` }));
+}
+
+let lastGen = null;
+async function load() {
+  const r = await fetch("/api/digest");
+  if (r.status === 404) { $("meta").textContent = "No digest yet."; $("msg").textContent = "Drop bills in data/inbox, or press “Wake the sloth”."; return; }
+  const d = await r.json();
+  if (d.generated_at === lastGen) return;
+  lastGen = d.generated_at; $("msg").textContent = "";
+  render(d);
+}
+
+$("run").onclick = async () => {
+  const btn = $("run");
+  btn.disabled = true; $("msg").className = "sub"; $("msg").textContent = "Thinking… slowly.";
+  try {
+    const r = await fetch("/api/run", { method: "POST" });
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.error || r.statusText);
+    $("msg").textContent = ""; lastGen = j.generated_at; render(j);
+  } catch (e) { $("msg").className = "err"; $("msg").textContent = "Audit failed: " + e.message; }
+  btn.disabled = false;
+};
+load();
+setInterval(() => load().catch(() => {}), 4000); // pick up digests created by the watcher or the weekly cron
+</script>
+</body>
+</html>

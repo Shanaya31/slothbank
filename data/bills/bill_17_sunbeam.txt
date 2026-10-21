@@ -1,0 +1,9 @@
+Sunbeam Power - Invoice
+Invoice date: 03/09/2026   Acct: 10-2885
+Description | Amount
+Energy usage (566 kWh) | $79.24
+Fixed service charge | $12.50
+Taxes & fees | $4.75
+Balance brought forward: $0.00
+TOTAL DUE $96.49
+Due date: 24/09/2026

@@ -1,0 +1,8 @@
+Shellter Home Insurance - Invoice
+Invoice date: 18/07/2026   Acct: 12-2671
+Description | Amount
+Home policy premium | $142.00
+Policy administration fee | $4.00
+Balance brought forward: $0.00
+TOTAL DUE $146.00
+Due date: 08/08/2026

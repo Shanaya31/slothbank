@@ -1,0 +1,354 @@
+{
+  "bill_01_sunbeam.txt": {
+    "merchant": "Sunbeam Power",
+    "billing_date": "2026-05-03",
+    "total_due": 71.12,
+    "line_items": [
+      {
+        "description": "Energy usage (395 kWh)",
+        "amount": 55.3
+      },
+      {
+        "description": "Fixed service charge",
+        "amount": 12.5
+      },
+      {
+        "description": "Taxes & fees",
+        "amount": 3.32
+      }
+    ]
+  },
+  "bill_02_fibernest.txt": {
+    "merchant": "FiberNest Internet",
+    "billing_date": "2026-05-11",
+    "total_due": 69.99,
+    "line_items": [
+      {
+        "description": "Gigabit plan",
+        "amount": 79.99
+      },
+      {
+        "description": "Equipment rental",
+        "amount": 10
+      },
+      {
+        "description": "Promotional discount",
+        "amount": -20
+      }
+    ]
+  },
+  "bill_03_shellter.txt": {
+    "merchant": "Shellter Home Insurance",
+    "billing_date": "2026-05-18",
+    "total_due": 146,
+    "line_items": [
+      {
+        "description": "Home policy premium",
+        "amount": 142
+      },
+      {
+        "description": "Policy administration fee",
+        "amount": 4
+      }
+    ]
+  },
+  "bill_04_aqua.txt": {
+    "merchant": "Aqua Metro Water",
+    "billing_date": "2026-05-24",
+    "total_due": 62.75,
+    "line_items": [
+      {
+        "description": "Water usage",
+        "amount": 33.9
+      },
+      {
+        "description": "Sewer charge",
+        "amount": 22.1
+      },
+      {
+        "description": "Stormwater fee",
+        "amount": 6.75
+      }
+    ]
+  },
+  "bill_05_sunbeam.txt": {
+    "merchant": "Sunbeam Power",
+    "billing_date": "2026-06-03",
+    "total_due": 75.72,
+    "line_items": [
+      {
+        "description": "Energy usage (426 kWh)",
+        "amount": 59.64
+      },
+      {
+        "description": "Fixed service charge",
+        "amount": 12.5
+      },
+      {
+        "description": "Taxes & fees",
+        "amount": 3.58
+      }
+    ]
+  },
+  "bill_06_fibernest.txt": {
+    "merchant": "FiberNest Internet",
+    "billing_date": "2026-06-11",
+    "total_due": 69.99,
+    "line_items": [
+      {
+        "description": "Gigabit plan",
+        "amount": 79.99
+      },
+      {
+        "description": "Equipment rental",
+        "amount": 10
+      },
+      {
+        "description": "Promotional discount",
+        "amount": -20
+      }
+    ]
+  },
+  "bill_07_shellter.txt": {
+    "merchant": "Shellter Home Insurance",
+    "billing_date": "2026-06-18",
+    "total_due": 146,
+    "line_items": [
+      {
+        "description": "Home policy premium",
+        "amount": 142
+      },
+      {
+        "description": "Policy administration fee",
+        "amount": 4
+      }
+    ]
+  },
+  "bill_08_aqua.txt": {
+    "merchant": "Aqua Metro Water",
+    "billing_date": "2026-06-24",
+    "total_due": 62.69,
+    "line_items": [
+      {
+        "description": "Water usage",
+        "amount": 33.84
+      },
+      {
+        "description": "Sewer charge",
+        "amount": 22.1
+      },
+      {
+        "description": "Stormwater fee",
+        "amount": 6.75
+      }
+    ]
+  },
+  "bill_09_sunbeam.txt": {
+    "merchant": "Sunbeam Power",
+    "billing_date": "2026-07-03",
+    "total_due": 89.82,
+    "line_items": [
+      {
+        "description": "Energy usage (521 kWh)",
+        "amount": 72.94
+      },
+      {
+        "description": "Fixed service charge",
+        "amount": 12.5
+      },
+      {
+        "description": "Taxes & fees",
+        "amount": 4.38
+      }
+    ]
+  },
+  "bill_10_fibernest.txt": {
+    "merchant": "FiberNest Internet",
+    "billing_date": "2026-07-11",
+    "total_due": 69.99,
+    "line_items": [
+      {
+        "description": "Gigabit plan",
+        "amount": 79.99
+      },
+      {
+        "description": "Equipment rental",
+        "amount": 10
+      },
+      {
+        "description": "Promotional discount",
+        "amount": -20
+      }
+    ]
+  },
+  "bill_11_shellter.txt": {
+    "merchant": "Shellter Home Insurance",
+    "billing_date": "2026-07-18",
+    "total_due": 146,
+    "line_items": [
+      {
+        "description": "Home policy premium",
+        "amount": 142
+      },
+      {
+        "description": "Policy administration fee",
+        "amount": 4
+      }
+    ]
+  },
+  "bill_12_aqua.txt": {
+    "merchant": "Aqua Metro Water",
+    "billing_date": "2026-07-24",
+    "total_due": 63.38,
+    "line_items": [
+      {
+        "description": "Water usage",
+        "amount": 34.53
+      },
+      {
+        "description": "Sewer charge",
+        "amount": 22.1
+      },
+      {
+        "description": "Stormwater fee",
+        "amount": 6.75
+      }
+    ]
+  },
+  "bill_13_sunbeam.txt": {
+    "merchant": "Sunbeam Power",
+    "billing_date": "2026-08-03",
+    "total_due": 100.65,
+    "line_items": [
+      {
+        "description": "Energy usage (594 kWh)",
+        "amount": 83.16
+      },
+      {
+        "description": "Fixed service charge",
+        "amount": 12.5
+      },
+      {
+        "description": "Taxes & fees",
+        "amount": 4.99
+      }
+    ]
+  },
+  "bill_14_fibernest.txt": {
+    "merchant": "FiberNest Internet",
+    "billing_date": "2026-08-11",
+    "total_due": 89.99,
+    "line_items": [
+      {
+        "description": "Gigabit plan",
+        "amount": 79.99
+      },
+      {
+        "description": "Equipment rental",
+        "amount": 10
+      }
+    ]
+  },
+  "bill_15_shellter.txt": {
+    "merchant": "Shellter Home Insurance",
+    "billing_date": "2026-08-18",
+    "total_due": 146,
+    "line_items": [
+      {
+        "description": "Home policy premium",
+        "amount": 142
+      },
+      {
+        "description": "Policy administration fee",
+        "amount": 4
+      }
+    ]
+  },
+  "bill_16_aqua.txt": {
+    "merchant": "Aqua Metro Water",
+    "billing_date": "2026-08-24",
+    "total_due": 60.46,
+    "line_items": [
+      {
+        "description": "Water usage",
+        "amount": 31.61
+      },
+      {
+        "description": "Sewer charge",
+        "amount": 22.1
+      },
+      {
+        "description": "Stormwater fee",
+        "amount": 6.75
+      }
+    ]
+  },
+  "bill_17_sunbeam.txt": {
+    "merchant": "Sunbeam Power",
+    "billing_date": "2026-09-03",
+    "total_due": 96.49,
+    "line_items": [
+      {
+        "description": "Energy usage (566 kWh)",
+        "amount": 79.24
+      },
+      {
+        "description": "Fixed service charge",
+        "amount": 12.5
+      },
+      {
+        "description": "Taxes & fees",
+        "amount": 4.75
+      }
+    ]
+  },
+  "bill_18_fibernest.txt": {
+    "merchant": "FiberNest Internet",
+    "billing_date": "2026-09-11",
+    "total_due": 89.99,
+    "line_items": [
+      {
+        "description": "Gigabit plan",
+        "amount": 79.99
+      },
+      {
+        "description": "Equipment rental",
+        "amount": 10
+      }
+    ]
+  },
+  "bill_19_shellter.txt": {
+    "merchant": "Shellter Home Insurance",
+    "billing_date": "2026-09-18",
+    "total_due": 171.56,
+    "line_items": [
+      {
+        "description": "Home policy premium",
+        "amount": 167.56
+      },
+      {
+        "description": "Policy administration fee",
+        "amount": 4
+      }
+    ]
+  },
+  "bill_20_aqua.txt": {
+    "merchant": "Aqua Metro Water",
+    "billing_date": "2026-09-24",
+    "total_due": 61.07,
+    "line_items": [
+      {
+        "description": "Water usage",
+        "amount": 32.22
+      },
+      {
+        "description": "Sewer charge",
+        "amount": 22.1
+      },
+      {
+        "description": "Stormwater fee",
+        "amount": 6.75
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+Aqua Metro Water - Invoice
+Invoice date: 24/09/2026   Acct: 13-3636
+Description | Amount
+Water usage | $32.22
+Sewer charge | $22.10
+Stormwater fee | $6.75
+Balance brought forward: $0.00
+TOTAL DUE $61.07
+Due date: 15/10/2026

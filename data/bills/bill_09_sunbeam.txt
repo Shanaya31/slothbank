@@ -1,0 +1,12 @@
+Subject: Your Sunbeam Power bill is ready
+
+Hi Alex,
+
+Your latest bill (issued 2026-07-03) is ready. Here's the breakdown:
+
+  * Energy usage (521 kWh): $72.94
+  * Fixed service charge: $12.50
+  * Taxes & fees: $4.38
+
+You owe $89.82 by 2026-07-24. Last month's bill was $48.19 (already paid).
+Account: 10-6330

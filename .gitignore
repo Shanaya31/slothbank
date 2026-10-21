@@ -1,0 +1,34 @@
+node_modules/
+.venv/
+py/.venv/
+__pycache__/
+*.py[cod]
+
+# Environment secrets; keep the example template
+.env
+.env.*
+!.env.example
+
+# Local SQLite runtime state
+data/mastra.db
+data/mastra.db-shm
+data/mastra.db-wal
+
+# Generated runtime history and reports
+data/history.csv
+data/bills.jsonl
+data/inbox/
+data/processed/
+data/reports/
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
+
+# Local smoke-test output
+data-smoke/
+data-smoke-failed-*/
+
+# Timestamped working backups
+*.bak-*
