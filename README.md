@@ -65,6 +65,36 @@ Not yet verified end to end:
 - Complete operation with networking disabled.
 - Browser presentation and behavior across environments.
 
+## Gemma 3 4B Extraction Benchmark
+
+Two extraction runs were evaluated against the project's synthetic ground-truth data
+using 20 bills. The single-shot run used one attempt per bill; the validation-enabled
+configuration allowed up to three attempts with validator feedback.
+
+| Metric | Single-shot | Validation-enabled |
+|---|---:|---:|
+| Merchant exact match | 80% (16/20) | 85% (17/20) |
+| Billing date exact match | 95% (19/20) | 100% (20/20) |
+| Total due exact match | 95% (19/20) | 100% (20/20) |
+| Line-item amount match | 95% (19/20) | 100% (20/20) |
+| All evaluated fields correct | 80% (16/20) | 85% (17/20) |
+| Failed validation / extraction | 1 | 0 |
+| Average time per bill | 1.62 s | 1.61 s |
+| Average attempts per bill | 1.00 | 1.00 |
+
+**Artifacts:** [Single-shot results](results/bench-gemma3_4b-noretry.json) · [Validation-enabled results](results/bench-gemma3_4b-retry.json)
+
+### Method and interpretation
+
+- Model: `gemma3:4b`.
+- Dataset: 20 synthetic bills with expected values in `data/truth.json`; this is a small, controlled test, not a representative real-world invoice dataset.
+- Merchant and billing date were compared exactly after merchant case/whitespace normalization. Total due was considered correct within one cent. Line items were compared by their amounts, not their descriptions, and matched as an order-independent list.
+- The validation-enabled configuration allowed up to three attempts, but the recorded average was 1.00 attempts per bill. These results therefore do not demonstrate that retries were responsible for the observed differences.
+- Timing depends on the local hardware and runtime environment. Results are descriptive measurements, not a performance guarantee.
+- The JSON files include per-bill results to make the evaluation inspectable and reproducible.
+
+These measurements are preliminary and limited to synthetic data. They should not be interpreted as production accuracy or evidence that the system can independently establish billing errors. Human review remains necessary.
+
 ## Limitations
 
 - Small merchant histories can produce noisy forecasts.
