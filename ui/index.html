@@ -30,7 +30,12 @@
   .m-name { font-weight: 600; }
   .m-fc { font-size: .85rem; color: var(--muted); }
   .anom { border-color: var(--warn); }
-  .anom h3 { margin: 0 0 4px; font-size: 1rem; }
+  .anom h3 { margin: 0 0 8px; font-size: 1rem; }
+  .anom-labels { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .anom-labels .chip { margin-right: 0; }
+  .anom-metric { margin-bottom: 8px; }
+  .email-subject { font-weight: 600; margin: 8px 0 2px; }
+  .email-body { margin-top: 4px; }
   .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); font-size: .75rem; margin-right: 6px; }
   table { border-collapse: collapse; width: 100%; font-size: .85rem; margin: 8px 0; }
   td, th { text-align: left; padding: 3px 6px; border-bottom: 1px solid var(--line); }
@@ -111,11 +116,14 @@ function render(d) {
       const card = el("div", { className: "card anom" });
       card.append(el("h3", { textContent: `${a.merchant} · ${a.billing_date}` }));
       card.append(
-        el("div", {},
+        el("div", { className: "anom-labels" },
           el("span", { className: "chip", textContent: a.analysis.likely_cause.replace("_", " ") }),
           el("span", { className: "chip", textContent: `suggest: ${a.analysis.recommended_action}` }),
-          `${money(c, a.actual)} billed vs ${money(c, a.expected)} expected (${a.deviation_pct > 0 ? "+" : ""}${a.deviation_pct}%, 90% range ${money(c, a.p05)}–${money(c, a.p95)})`,
         ),
+        el("div", {
+          className: "anom-metric",
+          textContent: `${money(c, a.actual)} billed vs ${money(c, a.expected)} expected (${a.deviation_pct > 0 ? "+" : ""}${a.deviation_pct}%, 90% range ${money(c, a.p05)}–${money(c, a.p95)})`,
+        }),
       );
       card.append(el("p", { textContent: a.analysis.explanation + (a.analysis.from_model ? "" : " (model unavailable, showing computed fallback)") }));
       if (a.diff.length) {
@@ -128,7 +136,10 @@ function render(d) {
       if (a.email) {
         card.append(el("div", { className: "sub", textContent: "Draft email (not sent)" }));
         const text = `Subject: ${a.email.subject}\n\n${a.email.body}`;
-        card.append(el("pre", { textContent: text }));
+        card.append(
+          el("div", { className: "email-subject", textContent: `Subject: ${a.email.subject}` }),
+          el("pre", { className: "email-body", textContent: a.email.body }),
+        );
         const b = el("button", { textContent: "Copy email" });
         b.onclick = async () => { await navigator.clipboard.writeText(text); b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy email"), 1500); };
         card.append(b);
