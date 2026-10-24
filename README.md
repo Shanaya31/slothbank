@@ -4,6 +4,18 @@ SlothBank is a local-first bill-monitoring prototype that tracks spending, estim
 
 **Demo-data notice:** Included bills and ground truth are synthetic. Forecasts and anomaly flags are estimates, not proof of overcharging. Draft emails are never sent automatically.
 
+## Screenshots
+
+These screenshots show the local dashboard using the project's synthetic sample data.
+
+### Anomaly review
+
+![SlothBank anomaly review dashboard](evidence/dashboard-anomaly-review.png)
+
+### Forecasts and spending history
+
+![SlothBank forecast dashboard](evidence/dashboard-forecasts.png)
+
 ## How it works
 
 1. Bills enter the local processing workflow.
