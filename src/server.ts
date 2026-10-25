@@ -20,6 +20,21 @@ export function startServer() {
       };
 
       try {
+        if (req.method === "GET" && req.url === "/favicon.svg") {
+          const faviconPath = path.resolve("ui/favicon.svg");
+
+          if (!fs.existsSync(faviconPath)) {
+            res.writeHead(404);
+            return res.end();
+          }
+
+          res.writeHead(200, {
+            "Content-Type": "image/svg+xml; charset=utf-8",
+            "Cache-Control": "public, max-age=86400",
+          });
+
+          return res.end(fs.readFileSync(faviconPath));
+        }
         if (req.method === "GET" && req.url === "/") {
           let html = fs.readFileSync(path.resolve("ui/index.html"), "utf8");
 
