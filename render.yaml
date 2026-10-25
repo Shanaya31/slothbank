@@ -1,0 +1,12 @@
+﻿services:
+  - type: web
+    name: slothbank-demo
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm run start:demo
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.0
+      - key: SLOTH_DEMO_MODE
+        value: "true"

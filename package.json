@@ -12,7 +12,8 @@
     "start": "tsx src/main.ts",
     "audit": "tsx src/audit.ts",
     "smoke": "tsx scripts/smoke.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "start:demo": "tsx src/demo.ts"
   },
   "dependencies": {
     "@mastra/core": "^1.78.0",

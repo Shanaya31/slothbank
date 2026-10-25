@@ -1,0 +1,294 @@
+{
+  "generated_at": "2026-10-21T14:11:54.105Z",
+  "as_of": "2026-10-19",
+  "engine": "baseline-median-mad",
+  "currency": "$",
+  "next_month_total": 381.02,
+  "sloth_summary": "Slowly... I looked through 21 bills. Set aside about $381.02 for next month. Shellter Home Insurance billed $171.56, 17.5% above the expected $146.00. 1 draft email is ready. Go back to sleep. 🦥",
+  "backtest": {
+    "n": 8,
+    "engine_mae": 13.52,
+    "naive_last_mae": 8.01
+  },
+  "merchants": [
+    {
+      "merchant": "Aqua Metro Water",
+      "n": 5,
+      "series": [
+        {
+          "date": "2026-05-24",
+          "value": 62.75,
+          "source_file": "bill_04_aqua.txt"
+        },
+        {
+          "date": "2026-06-24",
+          "value": 62.69,
+          "source_file": "bill_08_aqua.txt"
+        },
+        {
+          "date": "2026-07-24",
+          "value": 63.38,
+          "source_file": "bill_12_aqua.txt"
+        },
+        {
+          "date": "2026-08-24",
+          "value": 60.46,
+          "source_file": "bill_16_aqua.txt"
+        },
+        {
+          "date": "2026-09-24",
+          "value": 61.07,
+          "source_file": "bill_20_aqua.txt"
+        }
+      ],
+      "forecast": {
+        "month": "2026-10",
+        "p10": 59.76,
+        "median": 61.88,
+        "p90": 64
+      },
+      "checks": [
+        {
+          "billing_date": "2026-08-24",
+          "source_file": "bill_16_aqua.txt",
+          "actual": 60.46,
+          "p05": 60.69,
+          "median": 62.75,
+          "p95": 64.81,
+          "deviation_pct": -3.6,
+          "flagged": false
+        },
+        {
+          "billing_date": "2026-09-24",
+          "source_file": "bill_20_aqua.txt",
+          "actual": 61.07,
+          "p05": 60.66,
+          "median": 62.72,
+          "p95": 64.78,
+          "deviation_pct": -2.6,
+          "flagged": false
+        }
+      ]
+    },
+    {
+      "merchant": "FiberNest Internet",
+      "n": 5,
+      "series": [
+        {
+          "date": "2026-05-11",
+          "value": 69.99,
+          "source_file": "bill_02_fibernest.txt"
+        },
+        {
+          "date": "2026-06-11",
+          "value": 69.99,
+          "source_file": "bill_06_fibernest.txt"
+        },
+        {
+          "date": "2026-07-11",
+          "value": 69.99,
+          "source_file": "bill_10_fibernest.txt"
+        },
+        {
+          "date": "2026-08-11",
+          "value": 89.99,
+          "source_file": "bill_14_fibernest.txt"
+        },
+        {
+          "date": "2026-09-11",
+          "value": 89.99,
+          "source_file": "bill_18_fibernest.txt"
+        }
+      ],
+      "forecast": {
+        "month": "2026-10",
+        "p10": 60.99,
+        "median": 79.99,
+        "p90": 98.99
+      },
+      "checks": [
+        {
+          "billing_date": "2026-08-11",
+          "source_file": "bill_14_fibernest.txt",
+          "actual": 89.99,
+          "p05": 67.69,
+          "median": 69.99,
+          "p95": 72.29,
+          "deviation_pct": 28.6,
+          "flagged": true
+        },
+        {
+          "billing_date": "2026-09-11",
+          "source_file": "bill_18_fibernest.txt",
+          "actual": 89.99,
+          "p05": 67.69,
+          "median": 69.99,
+          "p95": 72.29,
+          "deviation_pct": 28.6,
+          "flagged": true
+        }
+      ]
+    },
+    {
+      "merchant": "Maple Test Utilities",
+      "n": 1,
+      "series": [
+        {
+          "date": "2026-10-19",
+          "value": 55,
+          "source_file": "watcher-test-20261020.txt"
+        }
+      ],
+      "forecast": null,
+      "checks": []
+    },
+    {
+      "merchant": "Shellter Home Insurance",
+      "n": 5,
+      "series": [
+        {
+          "date": "2026-05-18",
+          "value": 146,
+          "source_file": "bill_03_shellter.txt"
+        },
+        {
+          "date": "2026-06-18",
+          "value": 146,
+          "source_file": "bill_07_shellter.txt"
+        },
+        {
+          "date": "2026-07-18",
+          "value": 146,
+          "source_file": "bill_11_shellter.txt"
+        },
+        {
+          "date": "2026-08-18",
+          "value": 146,
+          "source_file": "bill_15_shellter.txt"
+        },
+        {
+          "date": "2026-09-18",
+          "value": 171.56,
+          "source_file": "bill_19_shellter.txt"
+        }
+      ],
+      "forecast": {
+        "month": "2026-10",
+        "p10": 142.26,
+        "median": 146,
+        "p90": 149.74
+      },
+      "checks": [
+        {
+          "billing_date": "2026-08-18",
+          "source_file": "bill_15_shellter.txt",
+          "actual": 146,
+          "p05": 141.2,
+          "median": 146,
+          "p95": 150.8,
+          "deviation_pct": 0,
+          "flagged": false
+        },
+        {
+          "billing_date": "2026-09-18",
+          "source_file": "bill_19_shellter.txt",
+          "actual": 171.56,
+          "p05": 141.2,
+          "median": 146,
+          "p95": 150.8,
+          "deviation_pct": 17.5,
+          "flagged": true
+        }
+      ]
+    },
+    {
+      "merchant": "Sunbeam Power",
+      "n": 5,
+      "series": [
+        {
+          "date": "2026-05-03",
+          "value": 71.12,
+          "source_file": "bill_01_sunbeam.txt"
+        },
+        {
+          "date": "2026-06-03",
+          "value": 75.72,
+          "source_file": "bill_05_sunbeam.txt"
+        },
+        {
+          "date": "2026-07-03",
+          "value": 89.82,
+          "source_file": "bill_09_sunbeam.txt"
+        },
+        {
+          "date": "2026-08-03",
+          "value": 100.65,
+          "source_file": "bill_13_sunbeam.txt"
+        },
+        {
+          "date": "2026-09-03",
+          "value": 96.49,
+          "source_file": "bill_17_sunbeam.txt"
+        }
+      ],
+      "forecast": {
+        "month": "2026-10",
+        "p10": 82.87,
+        "median": 93.16,
+        "p90": 103.44
+      },
+      "checks": [
+        {
+          "billing_date": "2026-08-03",
+          "source_file": "bill_13_sunbeam.txt",
+          "actual": 100.65,
+          "p05": 64.5,
+          "median": 75.72,
+          "p95": 86.94,
+          "deviation_pct": 32.9,
+          "flagged": true
+        },
+        {
+          "billing_date": "2026-09-03",
+          "source_file": "bill_17_sunbeam.txt",
+          "actual": 96.49,
+          "p05": 59.97,
+          "median": 82.77,
+          "p95": 105.57,
+          "deviation_pct": 16.6,
+          "flagged": false
+        }
+      ]
+    }
+  ],
+  "anomalies": [
+    {
+      "merchant": "Shellter Home Insurance",
+      "billing_date": "2026-09-18",
+      "source_file": "bill_19_shellter.txt",
+      "actual": 171.56,
+      "expected": 146,
+      "p05": 141.2,
+      "p95": 150.8,
+      "deviation_pct": 17.5,
+      "diff": [
+        {
+          "description": "Home policy premium",
+          "prev": 142,
+          "cur": 167.56,
+          "delta": 25.56
+        }
+      ],
+      "analysis": {
+        "explanation": "The home policy premium increased by $25.56, likely due to a change in the insurance rate. This is reflected in the line item for the Home policy premium.",
+        "likely_cause": "rate_increase",
+        "recommended_action": "negotiate",
+        "from_model": true
+      },
+      "email": {
+        "subject": "[DEMO] Question about a sample insurance bill",
+        "body": "Hello,\n\nThis is a fictional email draft generated for the SlothBank demo. The sample bill is $171.56, compared with an estimated amount of $146.00. These figures use synthetic data and do not represent a real customer account.\n\nPlease review the sample figures before taking any action.\n\nRegards,\nSlothBank Demo"
+      }
+    }
+  ]
+}
